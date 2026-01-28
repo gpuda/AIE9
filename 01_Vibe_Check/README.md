@@ -45,20 +45,20 @@ You will be required to submit a link to your GitHub, as well as screenshots of 
 Please evaluate your system on the following questions:
 
 1. Explain the concept of object-oriented programming in simple terms to a complete beginner.
-    - Aspect Tested:
+    - Aspect Tested: Concept explanation clarity for a beginner (accuracy + simplicity).
 2. Read the following paragraph and provide a concise summary of the key points…
-    - Aspect Tested:
+    - Aspect Tested: Summarization quality (captures key points, ignores fluff).
 3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
-    - Aspect Tested:
+    - Aspect Tested: Creative writing + instruction following (word count, coherence).
 4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
-    - Aspect Tested:
+    - Aspect Tested: Basic reasoning + arithmetic correctness.
 5. Rewrite the following paragraph in a professional, formal tone…
-    - Aspect Tested:
+    - Aspect Tested: Style transfer (tone shift while preserving meaning).
 
 #### ❓Question #1:
 
 Do the answers appear to be correct and useful?
-##### ✅ Answer:
+##### ✅ Answer: The responses produced by the assistant appear to be both correct and useful. Each answer appropriately addresses the intent of the prompt, demonstrates accurate reasoning or understanding of the topic, and presents the information in a clear and readable manner. The outputs are suitable for their intended use cases, ranging from beginner-friendly explanations and concise summaries to creative writing, basic reasoning, and professional tone rewriting.
 
 ---
 
@@ -73,18 +73,17 @@ Now test your assistant with personal questions it should be able to help with. 
 - "What can I cook with [enter ingredients] in fridge."
 
 ##### Your Prompts and Results:
-1. Prompt:
-   - Result:
-2. Prompt:
-   - Result:
-3. Prompt:
-   - Result:
+1. Prompt: Help me think through the pros and cons of learning AI engineering alongside my full-time data analyst job, and suggest a realistic weekly plan.
+   - Result: The assistant provided a detailed and well-balanced response that addressed both the benefits and challenges of learning AI engineering while working full-time. The advice was practical, realistic, and tailored to a data analyst background, including concrete mitigation strategies and a structured weekly learning plan.
+2. Prompt: Draft a polite and professional follow-up email to a colleague regarding a work-related question I sent last week, as I have not yet received a response.
+   - Result: The assistant generated a clear, polite, and professional follow-up email suitable for a workplace context. The tone was respectful and non-intrusive, making the message easy to adapt and reuse while maintaining a professional relationship.
+3. Prompt: What quick and healthy meals can I cook with chicken, rice, and vegetables that would be suitable as a post-HIIT workout meal?
+   - Result: The assistant provided multiple practical and well-structured meal suggestions tailored to a post-workout context. The response balanced nutritional guidance with quick preparation ideas, making it useful for healthy eating after high-intensity training.
 
 #### ❓Question #2:
 
 Are the vibes of this assistant's answers aligned with your vibes? Why or why not?
-##### ✅ Answer:
-
+##### ✅ Answer: The assistant’s answers align well with my preferences, as they are practical, structured, and easy to apply in real situations. I appreciate the clear reasoning, realistic tone, and focus on usefulness rather than generic or overly optimistic responses.
 ---
 
 #### 🏗️ Activity #3: Personal Vibe Checking Evals (Requires Additional Capabilities)
@@ -95,15 +94,15 @@ Now test your assistant with questions that would require capabilities beyond ba
 - "What time should I leave for the airport?"
 
 ##### Your Prompts and Results:
-1. Prompt:
-   - Result:
-2. Prompt:
-   - Result:
+1. Prompt: vibecheck_activity3_prompt1_schedule
+   - Result: The assistant correctly identified that it does not have access to my personal calendar or schedule. However, it still provided a helpful generic daily structure and suggested how the response could be improved if additional personal context were supplied.
+2. Prompt: What time should we meet to go hiking tomorrow, considering weather conditions and daylight?
+   - Result: The assistant explained that it lacks access to real-time weather, location, and daylight data, which prevents it from giving an exact recommendation. However, it provided sensible general guidance and safety considerations, demonstrating how the application handles scenarios that require external context.
 
 #### ❓Question #3:
 
 What are some limitations of your application?
-##### ✅ Answer:
+##### ✅ Answer: The main limitation of the application is that it operates as a standalone chat system without access to external tools, real-time data, or personal information such as calendars, location, or weather. As a result, it cannot provide precise answers for context-dependent questions and relies entirely on information explicitly provided by the user.
 
 ---
 
