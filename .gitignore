@@ -1,3 +1,5 @@
+__pycache__/
+*.pyc
 .DS_Store
 .env
 content/
@@ -7,3 +9,4 @@ __pycache__/
 .venv
 uv.lock
 workspace
+.claude/
