@@ -5,3 +5,5 @@ __pycache__/
 content/
 .claude/
 .venv/
+uv.lock
+*.egg-info/
