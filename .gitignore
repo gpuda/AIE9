@@ -13,3 +13,4 @@ workspace
 .venv/
 .claude/
 .claude/
+*.egg-info/
