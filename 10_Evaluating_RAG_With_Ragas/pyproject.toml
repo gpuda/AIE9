@@ -1,7 +1,7 @@
 [project]
-name = "09-evaluating-rag-with-ragas"
+name = "10-evaluating-rag-with-ragas"
 version = "0.1.0"
-description = "Evaluating RAG and Agents with Ragas - AIE9 Session 9"
+description = "Evaluating RAG and Agents with Ragas - AIE9 Session 10"
 readme = "README.md"
 requires-python = "==3.13.*"
 dependencies = [
