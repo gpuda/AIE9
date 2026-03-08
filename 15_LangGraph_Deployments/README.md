@@ -69,21 +69,48 @@ Have fun!
 What is the key architectural difference between the `simple_agent` and `agent_with_helpfulness` graphs? Specifically, explain how the helpfulness evaluation loop works and what mechanisms are in place to prevent it from running indefinitely.
 
 ##### Answer:
+The key architectural difference between the `simple_agent` and `agent_with_helpfulness` graphs is the addition of an evaluation loop in the second architecture.
+The `simple_agent` follows a straightforward execution flow: the agent receives a user query, optionally calls a tool if needed, generates a response, and then terminates.
+The `agent_with_helpfulness` graph introduces a `helpfulness` evaluation node after the agent generates a response. This node evaluates whether the response sufficiently answers the user’s question. In the LangSmith execution trace, this appears as a `helpfulness` step that returns values such as `HELPFULNESS: Y`.
+If the response is considered helpful, the graph proceeds to the end state. If the response is not considered helpful, the workflow loops back to the agent so it can attempt to generate a better response.
+To prevent the evaluation loop from running indefinitely, a loop limit (maximum retry count) is implemented in the graph logic. Once this retry limit is reached, the workflow terminates even if the helpfulness condition has not been satisfied.
 
+This architecture demonstrates how evaluation-based feedback loops can be integrated into agent workflows to improve response quality while maintaining safe execution boundaries.
+By separating answer generation from quality evaluation, the system can iteratively improve responses while maintaining control through retry limits.
 
 
 #### Question 2:
 What is the role of `langgraph.json` in the LangGraph Deployments? Describe each of its key fields and how the platform uses this file to discover and serve your graphs.
 
 ##### Answer:
+The `langgraph.json` file acts as the configuration file that defines how LangGraph should discover, load, and serve the graphs in a deployment. It provides the platform with the information needed to locate graph definitions, install dependencies, configure the runtime environment, and expose assistants through the LangGraph server.
 
+Several key fields define how the LangGraph platform discovers and serves agent graphs.
+The `version` field specifies the configuration schema version used by the LangGraph platform. This allows the platform to interpret the structure of the configuration correctly.
+The `dependencies` field lists the Python packages or local project paths that must be installed in order for the graphs to run. In this case `"."` indicates that the current project should be installed as a dependency.
+The `env` field specifies the environment file that should be loaded when the server starts. This file typically contains API keys and configuration variables required by the agents, such as OpenAI or Tavily credentials.
+The `python_version` field defines the Python runtime version that should be used when running the deployment.
+The `graphs` section maps graph identifiers to the Python import paths where the graphs are defined. For example, a graph ID may point to a module and object such as `app.graphs.simple_agent:graph`. The platform imports these objects at runtime to construct the agent workflows.
+The `assistants` section defines the assistants that will be exposed through the LangGraph server. Each assistant references a graph through the `graph_id` field and includes metadata such as a name and description. When the server starts, these assistants become available for interaction in LangSmith Studio or through API calls.
+
+Overall, `langgraph.json` acts as the central configuration that enables the LangGraph platform to automatically discover graph definitions, load the necessary environment and dependencies, and expose the configured assistants for execution and debugging.
+When the LangGraph server is started using `uv run langgraph dev`, the platform reads the `langgraph.json` file to discover the available graphs and automatically exposes the configured assistants in LangSmith Studio.
 
 
 #### Activity #1:
 Create your own agent graph! Build a new graph in `app/graphs/` with a custom evaluation node (e.g., a vibe checker, a fact verifier, a summarizer — get creative!). Register it in `langgraph.json`, serve it with `uv run langgraph dev`
 
 ##### Answer:
+### Custom Agent Graph: Clarity Agent
 
+I implemented a custom agent graph called `clarity_agent` that introduces a clarity evaluation step after the agent generates a response.
+
+The graph includes a `clarity` node that evaluates whether the generated answer is clear, well-structured, and easy to understand. If the response is considered clear (`CLARITY:Y`), the workflow terminates. If not, the workflow loops back to the agent to generate an improved answer.
+
+A loop limit is implemented to prevent the evaluation cycle from running indefinitely.
+
+This demonstrates how evaluation-based feedback loops can be integrated into LangGraph agent workflows to improve response quality.
+The agent was registered in `langgraph.json` and tested through LangGraph Studio after running the server with `uv run langgraph dev`, where the `clarity` node appears in the execution graph and evaluates the generated response.
 
 
 # Ship 🚢
