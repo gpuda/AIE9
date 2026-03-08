@@ -13,8 +13,11 @@ from app.rag import retrieve_information
 
 
 def get_tool_belt() -> List:
-    """Return the list of tools available to agents (Tavily, Arxiv, RAG)."""
-    tavily_tool = TavilySearch(max_results=5)
-    return [tavily_tool, ArxivQueryRun(), retrieve_information]
+    """Return the list of tools available to agents."""
 
+    # Original toolbelt (disabled for RAG evaluation)
+    # tavily_tool = TavilySearch(max_results=5)
+    # return [tavily_tool, ArxivQueryRun(), retrieve_information]
 
+    # RAG-only toolbelt for evaluation
+    return [retrieve_information]
