@@ -14,3 +14,4 @@ workspace
 .claude/
 .claude/
 *.egg-info/
+09_Synthetic_Data_Generation_and_LangSmith/usecase_data_kg.json
